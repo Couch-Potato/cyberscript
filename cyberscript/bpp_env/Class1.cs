@@ -9,6 +9,7 @@ namespace bpp_env
     public class Env
     {
         public List<Var> vars = new List<Var>();
+        public List<CustomCommand> Commands = new List<CustomCommand>();
         public void loadVars()
         {
             vars.Clear();
@@ -40,7 +41,10 @@ namespace bpp_env
         {
             if (v.GetType() == typeof(int))
             {
-                if (File.Exists(varName))
+               File.WriteAllText($"{varName}.int", v.ToString());
+            }else
+            {
+                File.WriteAllText($"{varName}.string", v.ToString());
             }
         }
     }
@@ -57,4 +61,11 @@ namespace bpp_env
         }
        
     }
+    public class CustomCommand
+    {
+        public string commandSpace;
+        public string command;
+        public string pointer;
+    }
+
 }
