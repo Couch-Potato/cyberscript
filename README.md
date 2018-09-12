@@ -4,7 +4,7 @@
 
 # Getting started
 Download cyberscript from this link [Cyberscript v1.2](https://youtube.com)
-After that paste the exe in your batch file directory. There create a script that does this
+After that paste the exe in your batch file directory. Next create a script called "thisbatfile.bat" in that directory. This will be your script that will be executed. Next, create another script that will run the script you just created.
 
 ```bat
 @echo off
@@ -12,7 +12,6 @@ title Cyberscript
 set script="thisbatfile.bat"
 cyberscript install all
 cyberscript run %script%
-cs.secpol lspolicy AccountLoging true
 ```
 #### This application uses the batch++
 
@@ -31,8 +30,8 @@ cyberscript compile %script% %outputexe%
  @echo off
  set script="thisbatfile.bat"
  cyberscript run %script%
- env set version "cyberscript version"
- echo env.version
+ var version "cyberscript version"
+ echo var.version
  ```
 
 This will allow you to create variables that will be reflected upon all scripts in the directory. This will run `cyberscript version` and then return the response. You cannot but regular bare strings in this, only valid windows or cyberscript commands.
