@@ -20,4 +20,6 @@ copy "%path%\bpp_env\bin\Debug\bpp_env.dll" "CyberScript_build\bpp_env.dll"
 copy "%path%\bpp_bpp\bin\Debug\bpp_bpp.dll" "CyberScript_build\bpp_bpp.dll"
 copy "%path%\secpol\bin\Debug\secpol.exe" "CyberScript_build\cs\secpol.exe"
 copy "%path%\cs_secpol\bin\Debug\cs_secpol.dll" "CyberScript_build\cs\cs_secpol.dll"
+copy "%path%\firewall\bin\Debug\firewall.exe" "CyberScript_build\cs\firewall.exe"
+copy "%path%\cs_firewall\bin\Debug\cs_firewall.dll" "CyberScript_build\cs\cs_firewall.dll"
 pause
