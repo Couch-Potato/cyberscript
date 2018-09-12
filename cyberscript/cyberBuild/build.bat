@@ -13,7 +13,9 @@ mkdir cs
 cd cs
 mkdir comp
 cd ../../
-Xcopy bpp_compiled/Program.cs CyberScript_build/cs/comp/comp.bin
-Xcopy cyberscript/bin/Debug/cyberscript.exe CyberScript_build/cyberscript.exe
-Xcopy bpp_env/bin/Debug/bpp_env.dll CyberScript_build/bpp_env.dll
-Xcopy bpp_bpp/bin/Debug/bpp_bpp.dll CyberScript_build/bpp_bpp.dll
+set path=%cd%
+copy "%path%\bpp_compiled\Program.cs" "CyberScript_build\cs\comp\comp.bin"
+copy "%path%\cyberscript\bin\Debug\cyberscript.exe" "CyberScript_build\cyberscript.exe"
+copy "%path%\bpp_env\bin\Debug\bpp_env.dll" "CyberScript_build\bpp_env.dll"
+copy "%path%\bpp_bpp\bin\Debug\bpp_bpp.dll" "CyberScript_build\bpp_bpp.dll"
+pause
