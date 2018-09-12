@@ -30,8 +30,8 @@ cyberscript compile %script% %outputexe%
  @echo off
  set script="thisbatfile.bat"
  cyberscript run %script%
- env set version "cyberscript version"
- echo env.version
+ var version "cyberscript version"
+ echo var.version
  ```
 
 This will allow you to create variables that will be reflected upon all scripts in the directory. This will run `cyberscript version` and then return the response. You cannot but regular bare strings in this, only valid windows or cyberscript commands.
