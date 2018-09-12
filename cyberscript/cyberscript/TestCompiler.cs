@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.IO;
 namespace cyberscript
 {
     class TestCompiler
@@ -22,8 +22,20 @@ namespace cyberscript
             cp.ReferencedAssemblies.Add("System.IO.dll");
             cp.ReferencedAssemblies.Add("System.IO.Compression.dll");
             cp.ReferencedAssemblies.Add("System.IO.Compression.FileSystem.dll");
-            cp.EmbeddedResources.Add($"{AppDomain.CurrentDomain.BaseDirectory}/lib.bin");
-            cp.EmbeddedResources.Add($"{AppDomain.CurrentDomain.BaseDirectory}/cyberscript.exe");
+            if (File.Exists($"{AppDomain.CurrentDomain.BaseDirectory}/lib.bin"))
+            {
+                Console.WriteLine("Writing binaries...");
+                cp.EmbeddedResources.Add($"{AppDomain.CurrentDomain.BaseDirectory}lib.bin");
+                Console.WriteLine($"Wrote {AppDomain.CurrentDomain.BaseDirectory}lib.bin to output");
+                cp.EmbeddedResources.Add($"{AppDomain.CurrentDomain.BaseDirectory}bpp_bpp.dll");
+                cp.EmbeddedResources.Add($"{AppDomain.CurrentDomain.BaseDirectory}bpp_env.dll");
+                cp.EmbeddedResources.Add($"{AppDomain.CurrentDomain.BaseDirectory}cyberscript.exe");
+            }
+            else
+            {
+                Console.WriteLine("[!] WARNING: Not able to find Core binaries, you may not be able to run this application as standalone.");
+            }
+           
             // Generate an executable instead of
             // a class library.
             cp.GenerateExecutable = true;

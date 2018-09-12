@@ -18,4 +18,6 @@ copy "%path%\bpp_compiled\Program.cs" "CyberScript_build\cs\comp\comp.bin"
 copy "%path%\cyberscript\bin\Debug\cyberscript.exe" "CyberScript_build\cyberscript.exe"
 copy "%path%\bpp_env\bin\Debug\bpp_env.dll" "CyberScript_build\bpp_env.dll"
 copy "%path%\bpp_bpp\bin\Debug\bpp_bpp.dll" "CyberScript_build\bpp_bpp.dll"
+copy "%path%\secpol\bin\Debug\secpol.exe" "CyberScript_build\cs\secpol.exe"
+copy "%path%\cs_secpol\bin\Debug\cs_secpol.dll" "CyberScript_build\cs\cs_secpol.dll"
 pause
