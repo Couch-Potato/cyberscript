@@ -1,5 +1,0 @@
-@echo off
-title Test
-var directory "cyberscript install"
-echo var.directory
-pause
