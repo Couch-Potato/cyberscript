@@ -78,31 +78,32 @@ namespace cyberscript
                 addEnvCommand("secpol");
                 addEnvCommand("gui");
                 addEnvCommand("firewall");
-                if (!File.Exists($"bin/{args[2]}.exe"))
+                if (Directory.Exists("bin/"))
                 {
-                    if (Directory.Exists("bin/"))
-                    {
-                        Directory.CreateDirectory("bin/");
-                        StreamWriter sw = new StreamWriter($"bin/{args[2]}.exe");
-                        sw.Write(' ');
-                        sw.Close();
-                        sw.Dispose();
-                    }
+                    Directory.Delete("bin/", true);
                 }
+                Directory.CreateDirectory("bin/");
                 Console.WriteLine("Preparing compiler...");
                 Console.WriteLine("Compressing script libraries... (Cyberscript)");
+                if (File.Exists("lib.bin"))
+                {
+                    File.Delete("lib.bin");
+                }
                 ZipFile.CreateFromDirectory("cs", "lib.bin");
-                string lib = File.ReadAllText("lib.bin");
+                
+                //string lib = File.ReadAllText("lib.bin");
                 Console.WriteLine($"Compiling script... ({args[1]})");
                 Runner.Compile(args[1], e);
                 string script = File.ReadAllText("build.bat");
+                script = script.Replace('"', '☻');
                 Console.WriteLine($"Compiling executable... ({args[2]})");
                 Console.WriteLine("Reading base...");
                 string baseFile = File.ReadAllText("cs/comp/comp.bin");
-                baseFile = baseFile.Replace("%z%", lib);
+                //baseFile = baseFile.Replace("%z%", lib);
                 baseFile = baseFile.Replace("%b%", script);
                 Console.WriteLine("Building...");
-                Compile.CompileSource(baseFile, args[2]);
+                TestCompiler.CompileCSharpCode(baseFile, "bin/"+args[2]);
+                
                 Console.WriteLine("Done.");
             }
 

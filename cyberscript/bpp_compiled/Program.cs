@@ -6,13 +6,21 @@ namespace bpp_compiled
 {
     class Program
     {
+        private static void Extract(string ressource, string outputPath)
+        {
+            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetCallingAssembly();
+            string nameSpace = typeof(Program).Namespace;
+            using (Stream stream = assembly.GetManifestResourceStream(nameSpace + ".res." + ressource))
+            using (BinaryReader reader = new BinaryReader(stream))
+                File.WriteAllBytes(outputPath, reader.ReadBytes((int) stream.Length));﻿
+        }
         static void Main(string[] args)
         {
             Console.WriteLine("==============================");
             Console.WriteLine(" Script Made With Cyberscript ");
             Console.WriteLine(" View our project on github!");
             Console.WriteLine("==============================");
-            string z = @"%z%";
+            
             string b = @"%b%";
             if (Directory.Exists("env/"))
             {
@@ -28,19 +36,15 @@ namespace bpp_compiled
             {
                 Console.WriteLine("Extracting Cyberscript binarys");
                 Directory.CreateDirectory("cs");
-                StreamWriter st = new StreamWriter("temp/bin.bin");
-                st.WriteLine("z");
-                st.Close();
-                st.Dispose();
-                z = null;
+                Extract("lib.bin", AppDomain.CurrentDomain.BaseDirectory + "temp/bin.bin/");
                 ZipFile.ExtractToDirectory("temp/bin.bin", "cs/");
             }
             StreamWriter s = new StreamWriter("temp/build.bat");
-            s.WriteLine(b);
+            s.WriteLine(b.Replace('░', '"'));
             s.Close();
             s.Dispose();
-            Process.Start("temp/build.bat");
-            Console.ReadLine();
+            Process p = Process.Start($"{AppDomain.CurrentDomain.BaseDirectory}/temp/build.bat");
+            p.WaitForExit();
         }
     }
 }

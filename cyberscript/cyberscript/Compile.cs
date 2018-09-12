@@ -14,7 +14,7 @@ namespace cyberscript
     {
         public static Assembly CompileSource(string sourceCode, string name)
         {
-            CodeDomProvider cpd = new CSharpCodeProvider();
+            CodeDomProvider cpd = CodeDomProvider.CreateProvider("CSharp");
             CompilerParameters cp = new CompilerParameters();
             cp.ReferencedAssemblies.Add("System.dll");
             cp.ReferencedAssemblies.Add("System.IO.dll");
@@ -22,11 +22,13 @@ namespace cyberscript
             cp.ReferencedAssemblies.Add("System.IO.Compression.FileSystem.dll");
             cp.ReferencedAssemblies.Add("System.Diagnostics.dll");
             cp.GenerateExecutable = true;
+            cp.GenerateInMemory = false;
+
             if (!Directory.Exists("bin"))
             {
                 Directory.CreateDirectory("bin");
             }
-            cp.OutputAssembly = $"bin/{name}.exe";
+            
             // Invoke compilation.
             CompilerResults cr = cpd.CompileAssemblyFromSource(cp, sourceCode);
             
