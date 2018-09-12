@@ -8,6 +8,14 @@ namespace bpp_env
 {
     public class Env
     {
+        public Env()
+        {
+            if (Directory.Exists("env/"))
+            {
+                Directory.Delete("env/",true);
+            }
+            Directory.CreateDirectory("env/");
+        }
         public List<Var> vars = new List<Var>();
         public List<CustomCommand> Commands = new List<CustomCommand>();
         public void loadVars()
@@ -21,16 +29,21 @@ namespace bpp_env
         public object getVar(string varname)
         {
             object returned = null;
+            loadVars();
+            
             foreach (Var v in vars)
             {
-                if (v.varName == varname)
+               
+                if (v.varName == "env/" + varname)
                 {
+                    
                     if (v.varType == "int")
                     {
-                        returned = Convert.ToInt16(v.varObject);
+                        returned = Convert.ToInt32(v.varObject);
                     }
                     else
                     {
+                        Console.WriteLine("[B++] Returning variable " + varname);
                         returned = v.varObject;
                     }
                 }
@@ -41,10 +54,14 @@ namespace bpp_env
         {
             if (v.GetType() == typeof(int))
             {
-               File.WriteAllText($"{varName}.int", v.ToString());
+                TextWriter tw = new StreamWriter($"env/{varName}.int", false);
+                tw.WriteLine(v.ToString());
+                tw.Close();
             }else
             {
-                File.WriteAllText($"{varName}.string", v.ToString());
+                TextWriter tw = new StreamWriter($"env/{varName}.string", false);
+                tw.WriteLine(v.ToString());
+                tw.Close();
             }
         }
     }
@@ -65,7 +82,12 @@ namespace bpp_env
     {
         public string commandSpace;
         public string command;
-        public string pointer;
+        public CustomCommand(string space, string command_)
+        {
+            commandSpace = space;
+            command = command_;
+        }
+        
     }
 
 }
