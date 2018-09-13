@@ -17,7 +17,7 @@ namespace bpp_bpp
             string script = File.ReadAllText(scriptLocation);
             foreach (CustomCommand c in e.Commands)
             {
-                script = script.Replace($"{c.commandSpace}.{c.command}", $"{c.commandSpace}/{c.command}");
+                script = script.Replace($"{c.commandSpace}.{c.command}", $@"{c.commandSpace}\{c.command}");
             }
             foreach (string line in File.ReadAllLines(scriptLocation))
             {

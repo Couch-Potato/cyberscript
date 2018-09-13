@@ -26,11 +26,19 @@ namespace cyberscript
         {
             if (args[0] == "version")
             {
-                Console.WriteLine("=================================");
-                Console.WriteLine("Cyberscript Version: 1.1.0");
-                Console.WriteLine("Batch Plus Plus: 1.0.3");
-                Console.WriteLine($"Cyberscript installed:  {Directory.Exists("cs").ToString()}");
-                Console.WriteLine("=================================");
+                if (args[1] != null)
+                {
+                    Console.WriteLine("1.1.0");
+                }
+                else
+                {
+                    Console.WriteLine("=================================");
+                    Console.WriteLine("Cyberscript Version: 1.1.0");
+                    Console.WriteLine("Batch Plus Plus: 1.0.3");
+                    Console.WriteLine($"Cyberscript installed:  {Directory.Exists("cs").ToString()}");
+                    Console.WriteLine("=================================");
+                }
+                
             }
             else if (args[0] == "install")
             {

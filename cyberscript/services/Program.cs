@@ -20,7 +20,10 @@ namespace services
             }
             if (args[0] == "get")
             {
-                Console.WriteLine(scanner.getService(args[1]));
+                Console.WriteLine(scanner.getService(args[1]).serviceHandle);
+                Console.WriteLine(scanner.getService(args[1]).serviceName);
+                Console.WriteLine(scanner.getService(args[1]).serviceStatus);
+                Console.WriteLine(scanner.getService(args[1]).serviceType);
             }
             if (args[0] == "stop")
             {
