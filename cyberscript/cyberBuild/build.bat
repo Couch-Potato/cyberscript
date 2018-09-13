@@ -25,4 +25,6 @@ copy "%path%\cs_firewall\bin\Debug\cs_firewall.dll" "CyberScript_build\cs\cs_fir
 copy "%path%\services\bin\Debug\services.exe" "CyberScript_build\cs\services.exe"
 copy "%path%\cs_service_scan\bin\Debug\cs_service_scan.dll" "CyberScript_build\cs\cs_service_scan.dll"
 copy "%path%\cs_service_manage\bin\Debug\cs_service_manage.dll" "CyberScript_build\cs\cs_service_manage.dll"
+copy "%path%\registry\bin\Debug\registry.exe" "CyberScript_build\cs\registry.exe"
+copy "%path%\cs_regedit\bin\Debug\cs_regedit.dll" "CyberScript_build\cs\cs_regedit.dll"
 pause
