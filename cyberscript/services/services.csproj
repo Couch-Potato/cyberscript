@@ -49,5 +49,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\cs_service_manage\cs_service_manage.csproj">
+      <Project>{f5f6d646-4557-4c89-bd54-bbc2e3b2dfa7}</Project>
+      <Name>cs_service_manage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cs_service_scan\cs_service_scan.csproj">
+      <Project>{d156a78b-bc8b-406b-9961-474a3ec05921}</Project>
+      <Name>cs_service_scan</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

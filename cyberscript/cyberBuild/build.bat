@@ -22,4 +22,7 @@ copy "%path%\secpol\bin\Debug\secpol.exe" "CyberScript_build\cs\secpol.exe"
 copy "%path%\cs_secpol\bin\Debug\cs_secpol.dll" "CyberScript_build\cs\cs_secpol.dll"
 copy "%path%\firewall\bin\Debug\firewall.exe" "CyberScript_build\cs\firewall.exe"
 copy "%path%\cs_firewall\bin\Debug\cs_firewall.dll" "CyberScript_build\cs\cs_firewall.dll"
+copy "%path%\services\bin\Debug\services.exe" "CyberScript_build\cs\services.exe"
+copy "%path%\cs_service_scan\bin\Debug\cs_service_scan.dll" "CyberScript_build\cs\cs_service_scan.dll"
+copy "%path%\cs_service_manage\bin\Debug\cs_service_manage.dll" "CyberScript_build\cs\cs_service_manage.dll"
 pause
